@@ -1,0 +1,156 @@
+---
+title: XII Escuela de Física Fundamental 
+start_datetime: 2017-09-07 9:00:00
+end_datetime: 2017-09-11 18:00:00
+timezone: America/Mexico_City
+description: A fun filled day with friends and beer.
+background_image: /images/back3.png
+map:
+  address: Area Academica de Matematicas y Fisica, Universidad Autonoma del Estado de Hidalgo
+  zoom: 16
+  latitude: 20.093194,
+  longitude: -98.7103099
+featured_brews:
+  - image: /images/beers/qft.png
+    title: Teoría Cuántica de Campos
+    link: #
+  - image: /images/beers/sm.png
+    title: Modelo Estándar
+    link: #
+  - image: /images/beers/qcd.png
+    title: Cromodinámica Cuántica
+    link: #
+  - image: /images/beers/nu.png
+    title: Neutrinos y física electrodébil
+    link: #
+  - image: /images/beers/astrop.png
+    title: Astropartículas
+    link: #
+photos:
+  - image: /images/2015/1.jpeg
+    title: MF2
+  - image: /images/2015/2.jpeg
+    title: Estudiantes
+  - image: /images/2015/4.jpeg
+    title: Extramuros
+---
+
+<p class="success">Mensaje enviado, estaremos en contacto.</p>
+
+<p class="dates">
+	{{ page.start_datetime | date: "%A %-d of %B %Y %-I%P" }} - {{ page.end_datetime | date: "%-I%P" }}
+	<span class="addtocalendar atc-style-button-icon atc-style-menu-wb">
+		<a class="atcb-link">{% include icons/date.svg %}</a>
+		<var class="atc_event">
+			<var class="atc_date_start">{{ page.start_datetime | date: "%Y-%m-%d %H:%M:%S" }}</var>
+			<var class="atc_date_end">{{ page.end_datetime | date: "%Y-%m-%d %H:%M:%S" }}</var>
+			<var class="atc_timezone">{{ page.timezone }}</var>
+			<var class="atc_title">{{ page.title }}</var>
+			<var class="atc_description">{{ page.description }}</var>
+			<var class="atc_location">{{ page.map.address }}</var>
+		</var>
+	</span>
+</p>
+<p>La Escuela de Física Fundamental es un evento
+creado en 2005 en la ciudad de Morelia, para celebrar el Año
+Internacional de la Física. Se trata de motivar a estudiantes
+avanzados de licenciatura y de posgrado y de ponerlos en contacto con
+algunos de los tópicos centrales para poder iniciar una carrera de
+investigación en la Física de Partículas y Altas Energías.</p>
+
+<p>Esta escuela se realizó en la ciudad de Morelia en 2005, 2007, 2009 y
+2015. Durante los años 2006, 2008, 2010, 2011, 2013, 2014 y 2016, las
+Universidades de Sonora, Guanajuato, Autónoma de Puebla, UNAM, Sonora,
+Sinaloa y Veracruzana, respectivamente, fueron sedes de la
+Escuela. Este año, la Universidad Autónoma del Estado de Hidalgo
+recibirá este evento en las instalacioens del Área Académica de
+Matemáticas y Física.</p>
+
+<h3 class="editable">Cursos</h3>
+<div class="gallery">
+	{% for feature in page.featured_brews %}
+		<a href="{% include relative-src.html src=feature.link %}">
+			<div class="inner-wrapper">
+				<img src="{% include relative-src.html src=feature.image %}" alt="{{ feature.title }}">
+			</div>
+			<p class="caption">{{ feature.title }}</p>
+		</a>
+	{% endfor %}
+</div>
+<!--
+<h3 class="editable">Get your tickets</h3>
+{{ site.eventbrite_embed }}
+-->
+
+<h3 class="editable">Tell your friends</h3>
+<div class="sharing">
+	{% assign share_url = page.url | absolute_url | cgi_escape %}
+	<a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ share_url }}">{% include icons/social-icon.html icon="Facebook" %}</a>
+	<a class="twitter" href="https://twitter.com/intent/tweet?url={{ share_url }}&amp;text=I'm%20going%20to%20this%20event!">{% include icons/social-icon.html icon="Twitter" %}</a>
+	<a class="google-plus" href="https://plus.google.com/share?url={{ share_url }}">{% include icons/social-icon.html icon="Google Plus" %}</a>
+	<a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ share_url }}">{% include icons/social-icon.html icon="LinkedIn" %}</a>
+	<a class="email" href="mailto:?subject=I'm going to this event&amp;body=Check%20it%20out%20-%20{{ share_url }}">{% include icons/social-icon.html icon="Email" %}</a>
+</div>
+
+<h3 class="editable">Location</h3>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d936.7434018748138!2d-98.71101487076373!3d20.093390099157055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1a773691bc455%3A0xe552799fa3ca76a5!2s%C3%81rea+Acad%C3%A9mica+de+Matem%C3%A1ticas+y+F%C3%ADsica%2C+Universidad+Aut%C3%B3noma+del+Estado+de+Hidalgo%2C+Universidad+Autonoma+del+Estado+de+Hidalgo!5e0!3m2!1ses-419!2smx!4v1496728538818" width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+<!-- <div class="map" id="gmap_canvas"></div>  -->
+<address><a href="https://www.google.com/maps/place/{{ page.map.address | url_encode }}">{% include icons/place.svg %} {{ page.map.address }}</a></address>
+
+
+
+<h3 class="editable">Galería</h3>
+<div class="grid">
+	{% for photo in page.photos %}
+		<div class="grid-item"><a class="fancybox" rel="group" href="{% include relative-src.html src=photo.image %}"><img src="{% include relative-src.html src=photo.image %}" alt="{{ photo.title }}"/></a></div>
+	{% endfor %}
+</div>
+
+<h3 class="editable">Contact</h3>
+<p class="editable">Send us a message with any questions about sponsoring the event, tickets or anything else.</p>
+
+<form method="post" action="{{ site.baseurl }}/index.html?submit=success">
+	<label for="email_address">Email Address</label>
+	<input id="email_address" type="text" name="email">
+
+	<label for="name">Name</label>
+	<input id="name" type="text" name="name">
+
+	<label for="message">Message</label>
+	<textarea id="message" name="message"></textarea>
+
+	<input type="hidden" name="_to" value="contact@example.com">
+	<input type="text" name="_gotcha" style="display: none;">
+
+	<input type="submit" value="Send Message">
+</form>
+
+<script type="text/javascript">
+	window.mapData = {{ page.map | jsonify }};
+
+	function initMap() {
+		var myOptions = {
+			scrollwheel: false,
+			draggable: false,
+			panControl: false,
+			disableDefaultUI: true,
+			styles: [{"featureType":"landscape.man_made","elementType":"geometry","stylers":[{"color":"#f7f1df"}]},{"featureType":"landscape.natural","elementType":"geometry","stylers":[{"color":"#d0e3b4"}]},{"featureType":"landscape.natural.terrain","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.medical","elementType":"geometry","stylers":[{"color":"#fbd3da"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#bde6ab"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffe15f"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#efd151"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"color":"black"}]},{"featureType":"transit.station.airport","elementType":"geometry.fill","stylers":[{"color":"#cfb2db"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#a2daf2"}]}],
+			zoom: window.mapData.zoom,
+			maxZoom: window.mapData.zoom,
+			minZoom: window.mapData.zoom,
+			center: new google.maps.LatLng(window.mapData.latitude, window.mapData.longitude),
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
+		marker = new google.maps.Marker({
+			map: map,
+			position: new google.maps.LatLng(window.mapData.latitude, window.mapData.longitude)
+		});
+
+		google.maps.event.addDomListener(window, "resize", function () {
+			map.setCenter(myOptions.center);
+		});
+	}
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ site.google_maps_javascript_api_key }}&amp;callback=initMap"></script>
