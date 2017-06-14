@@ -33,13 +33,16 @@ photos:
     title: Estudiantes
   - image: /images/galeria/4.jpeg
     title: Extramuros
+
+cartel:
+  - image: /images/cartel/1.png  
 ---
 
 
 <p class="success">Mensaje enviado, estaremos en contacto.</p>
 
 <p class="dates">
-	{{ page.start_datetime | date: "%A %-d of %B %Y %-I%P" }} - {{ page.end_datetime | date: "%A %-d of %B %Y %-I%P" }}
+	{{ page.start_datetime | date: "Lunes %-d de Agosto  %-I%P" }} - {{ page.end_datetime | date: "Viernes %-d de Agosto %-I%P" }}
 	<span class="addtocalendar atc-style-button-icon atc-style-menu-wb">
 		<a class="atcb-link">{% include icons/date.svg %}</a>
 		<var class="atc_event">
@@ -86,6 +89,26 @@ Matemáticas y Física.</p>
 
 <p>La fecha límite para recibir solicitudes es el Domingo 09 de julio de 2017.</p> 
 
+<h3 class="editable">Inscripciones / mensajes </h3>
+<p class="editable">Para registrarte, llena la siguiente forma, y pide a algún miembro de la comunidad nacional de física que mande una carta de referencia a effxii (at) gmail.com.</p>
+
+<form action="https://formspree.io/effxii@gmail.com" method="POST">
+  <label for="name">Nombre</label>
+  <input id="name" type="text" name="name">
+  
+  <label for="email_address">E-mail</label>
+  <input id="email_address" type="text" name="email">
+  <label for="university">Institución</label>
+  <input id="university" type="text" name="university">
+  <label for="semester">Programa y Semestre</label>
+  <input id="semester" type="text" name="semester">
+  <label for="message">¿Por qué quieres asistir?</label>
+  <textarea id="message" name="message"></textarea>
+
+  
+  <input type="submit" value="Enviar mensaje">
+</form>
+
 <h3 class="editable">Difundir el evento</h3>
 <div class="sharing">
 	{% assign share_url = page.url | absolute_url | cgi_escape %}
@@ -111,25 +134,14 @@ Matemáticas y Física.</p>
 	{% endfor %}
 </div>
 
-<h3 class="editable">Inscripciones / mensajes </h3>
-<p class="editable">Para registrarte, llena la siguiente forma, y pide a algún miembro de la comunidad nacional de física que mande una carta de referencia a effxii (at) gmail.com.</p>
+<h3 class="editable">Cartel del evento</h3>
+<div class="grid">
+	{% for afiche in page.cartel %}
+		<div class="picture"><a class="fancybox" rel="group" href="{% include relative-src.html src=afiche.image %}"><img src="{% include relative-src.html src=afiche.image %}" alt="{{ afiche.title }}"/></a></div>
+	{% endfor %}
+</div>
 
-<form action="https://formspree.io/effxii@gmail.com" method="POST">
-  <label for="name">Nombre</label>
-  <input id="name" type="text" name="name">
-  
-  <label for="email_address">E-mail</label>
-  <input id="email_address" type="text" name="email">
-  <label for="university">Institución</label>
-  <input id="university" type="text" name="university">
-  <label for="semester">Semestre</label>
-  <input id="semester" type="text" name="semester">
-  <label for="message">¿Por qué quieres asistir?</label>
-  <textarea id="message" name="message"></textarea>
 
-  
-  <input type="submit" value="Enviar mensaje">
-</form>
 
 
 <script type="text/javascript">
